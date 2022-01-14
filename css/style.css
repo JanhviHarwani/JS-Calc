@@ -1,0 +1,133 @@
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    margin: 0;
+    font-size: 14px;
+    padding: 2%;
+}
+
+.main_calc {
+    display: flex;
+    flex-basis: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.grid_calc {
+    width: 350px;
+    background-color: #f3f3f3;
+    height: 500px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    padding: 1em;
+}
+
+.result {
+    grid-row: 1/3;
+    grid-column: 1/6;
+    display: grid;
+    justify-items: end;
+    align-items: center;
+    font-size: 34px;
+    font-weight: bold;
+}
+
+.textAlignmentContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.deg_fe {
+    grid-row: 3;
+    grid-column: 1/3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.deg {
+    grid-column: 1;
+}
+
+.fe {
+    grid-column: 2;
+}
+
+.mc_mr_mPlus_minus_ms {
+    grid-row: 4;
+    grid-column: 1/6;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.memClear {
+    grid-column: 1;
+}
+
+.mr {
+    grid-column: 2;
+}
+
+.mPlus {
+    grid-column: 3;
+}
+
+.mMinus {
+    grid-column: 4;
+}
+
+.ms {
+    grid-column: 5;
+}
+
+.trigo_function {
+    grid-row: 5;
+    grid-column: 1/5;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.trigo {
+    grid-column: 1/3;
+}
+
+.function {
+    grid-column: 3/5;
+}
+
+.grid_keypad {
+    grid-row: 6/13;
+    grid-column: 1/6;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    grid-gap: 0.5em;
+}
+
+.background_color {
+    background-color: #bbbec08a;
+}
+
+
+/* .background_color:hover,
+:active {
+    box-shadow: 5px 5px 10px -1px rgb(0 0 0 / 30%);
+} */
+
+.active_bgColor:active {
+    background-color: #bbbec02e;
+}
+
+.background_color_num {
+    background-color: aliceblue;
+    font-weight: bolder;
+}
+
+.background_color_equals {
+    background-color: #a6cef2;
+}
