@@ -1,13 +1,11 @@
-var answer, buttonText;
+var buttonText, tempVarTrigo;
 var result = document.querySelector("#result");
+var resultToShow = document.querySelector(".result");
 var resultValue = "";
 var buttons = document.querySelectorAll("button");
 var buttonLength = document.querySelectorAll("button").length;
-var degRadFeBtns = document.querySelectorAll(".deg_fe button");
-var trigobtns = document.querySelectorAll(".trigo_function .trigoBtns .dropdown .dropdown-menu button");
-var degButton = document.querySelector("#deg");
-var radButton = document.querySelector("#rad");
-var equalsBtn = document.querySelector(".equals");
+var degButton = document.querySelector(".deg");
+var radButton = document.querySelector(".rad");
 var memorySave;
 
 //for radian to degree conversion
@@ -28,6 +26,7 @@ closingBracket.addEventListener("click", () => {
 })
 
 //Event listeners and evaluation for all the buttons
+
 for (var i = 0; i < buttonLength; i++) {
     buttons[i].addEventListener("click", function(event) {
         buttonText = event.target.textContent;
@@ -95,13 +94,17 @@ for (var i = 0; i < buttonLength; i++) {
                 break;
 
             case "10x":
+                let tempVarForTenRaised;
+                tempVarForTenRaised = resultValue
                 resultValue = Math.pow(10, resultValue);
-                result.value = resultValue;
+                resultToShow.value = "10^" + tempVarForTenRaised;
                 break;
 
             case "x2":
+                let tempVarForSquare;
+                tempVarForSquare = resultValue
                 resultValue = Math.pow(resultValue, 2);
-                result.value = resultValue;
+                resultToShow.value = tempVarForSquare + "^2";
                 break;
 
             case "+/-":
@@ -117,73 +120,82 @@ for (var i = 0; i < buttonLength; i++) {
                 break;
 
             case "sin":
-                if (degButton.checked) {
+                tempVarTrigo = resultValue;
+                if (degButton.classList.contains('radiobtnselected')) {
                     deg = degFunction();
+                    resultToShow.value = "sin(" + tempVarTrigo + ")°";
                     resultValue = Math.sin(deg);
-                    result.value = resultValue;
+
                 }
-                if (radButton.checked) {
+                if (radButton.classList.contains('radiobtnselected')) {
+                    resultToShow.value = "sin(" + tempVarTrigo + ")rad"
                     resultValue = Math.sin(resultValue);
-                    result.value = resultValue;
+
                 }
                 break;
             case "cos":
-                if (degButton.checked) {
+                tempVarTrigo = resultValue;
+                if (degButton.classList.contains('radiobtnselected')) {
                     deg = degFunction();
+                    resultToShow.value = "cos(" + tempVarTrigo + ")°";
                     resultValue = Math.cos(deg);
-                    result.value = resultValue;
+
                 }
-                if (radButton.checked) {
+                if (radButton.classList.contains('radiobtnselected')) {
+                    resultToShow.value = "cos(" + tempVarTrigo + ")rad"
                     resultValue = Math.cos(resultValue);
-                    result.value = resultValue;
+
                 }
                 break;
             case "tan":
-                if (degButton.checked) {
+                tempVarTrigo = resultValue;
+                if (degButton.classList.contains('radiobtnselected')) {
                     deg = degFunction();
+                    resultToShow.value = "tan(" + tempVarTrigo + ")°";
                     resultValue = Math.tan(deg);
-                    result.value = resultValue;
+
                 }
-                if (radButton.checked) {
+                if (radButton.classList.contains('radiobtnselected')) {
+                    resultToShow.value = "tan(" + tempVarTrigo + ")rad"
                     resultValue = Math.tan(resultValue);
-                    result.value = resultValue;
+
                 }
                 break;
             case "asin":
-                if (degButton.checked) {
-
+                tempVarTrigo = resultValue;
+                if (degButton.classList.contains('radiobtnselected')) {
+                    resultToShow.value = "asin(" + tempVarTrigo + ")°";
                     resultValue = Math.asin(resultValue) * 180 / Math.PI;
-                    result.value = resultValue;
                 }
-                if (radButton.checked) {
+                if (radButton.classList.contains('radiobtnselected')) {
+                    resultToShow.value = "asin(" + tempVarTrigo + ")rad";
                     resultValue = Math.asin(resultValue);
-                    result.value = resultValue;
                 }
                 break;
             case "acos":
-                if (degButton.checked) {
-
+                tempVarTrigo = resultValue;
+                if (degButton.classList.contains('radiobtnselected')) {
+                    resultToShow.value = "acos(" + tempVarTrigo + ")°";
                     resultValue = Math.acos(resultValue) * 180 / Math.PI;
-                    result.value = resultValue;
                 }
-                if (radButton.checked) {
+                if (radButton.classList.contains('radiobtnselected')) {
+                    resultToShow.value = "acos(" + tempVarTrigo + ")rad";
                     resultValue = Math.acos(resultValue);
-                    result.value = resultValue;
                 }
                 break;
             case "atan":
-                if (degButton.checked) {
-
+                tempVarTrigo = resultValue;
+                if (degButton.classList.contains('radiobtnselected')) {
+                    resultToShow.value = "atan(" + tempVarTrigo + ")°";
                     resultValue = Math.atan(resultValue) * 180 / Math.PI;
-                    result.value = resultValue;
                 }
-                if (radButton.checked) {
+                if (radButton.classList.contains('radiobtnselected')) {
+                    resultToShow.value = "atan(" + tempVarTrigo + ")rad";
                     resultValue = Math.atan(resultValue);
-                    result.value = resultValue;
                 }
                 break;
             case "MS":
-                memorySave = resultValue;
+                memorySave = result.value;
                 break;
 
             case "M+":
@@ -197,14 +209,17 @@ for (var i = 0; i < buttonLength; i++) {
                 break;
 
             case "MR":
+
                 resultValue = memorySave;
                 result.value = resultValue;
+
                 break;
 
             case "MC":
                 memorySave = "";
                 resultValue = memorySave;
-                result.value = resultValue;
+                result.value = "0";
+
                 break;
 
             case "exp":
@@ -231,21 +246,18 @@ for (var i = 0; i < buttonLength; i++) {
                 break;
 
             case "xy":
-                let xValue = parseInt(resultValue.slice(0, 1));
-                let yValue = parseInt(resultValue.slice(1, 3));
-                resultValue = Math.pow(xValue, yValue);
-                result.value = resultValue;
+                resultValue += '**';
                 break;
 
             case "exp":
-                let baseValue = parseInt(resultValue.slice(0, 1));
-                let expValue = parseInt(resultValue.slice(1, 3));
-                resultValue = Math.exp(baseValue, expValue);
-                result.value = resultValue;
+                resultValue = Math.exp(resultValue);
                 break;
 
             case "√":
-                result.value = Math.sqrt(resultValue);
+                let tempVarForsqrt;
+                tempVarForsqrt = resultValue
+                resultValue = Math.pow(resultValue, 1 / 2);
+                resultToShow.value = "√" + tempVarForsqrt;
                 break;
 
             case "F-E":
@@ -277,13 +289,81 @@ for (var i = 0; i < buttonLength; i++) {
                 result.value = resultValue;
                 break;
 
+            case "2nd":
+                document.querySelector("button.xSquare").innerHTML = ' <div class="textAlignmentContainer">x<sup>3</sup></div>';
+                document.querySelector("button.sqrt").innerHTML = ' <div class="textAlignmentContainer"><sup>3</sup>√</div>';
+                document.querySelector("button.power").innerHTML = ' <div class="textAlignmentContainer">y√x</div>';
+                document.querySelector("button.tenRaiseTo").innerHTML = ' <div class="textAlignmentContainer">2<sup>x</sup></div>';
+                document.querySelector("button.log").innerHTML = ' <div class="textAlignmentContainer">log<sub>y</sub>x</div>';
+                document.querySelector("button.naturalLog").innerHTML = ' <div class="textAlignmentContainer">e<sup>x</sup></div>';
+                break;
+
+            case "x3":
+                let tempVarForCube;
+                tempVarForCube = resultValue
+                resultValue = Math.pow(resultValue, 3);
+                resultToShow.value = tempVarForCube + "^3";
+                break;
+
+            case "3√":
+                let tempVarForCubert;
+                tempVarForCubert = resultValue
+                resultValue = Math.pow(resultValue, 1 / 3);
+                resultToShow.value = '3√' + tempVarForCubert;
+                break;
+
+            case "2x":
+                let tempVarFor2Raised;
+                tempVarFor2Raised = resultValue
+                resultValue = Math.pow(2, resultValue);
+                resultToShow.value = '2^' + tempVarFor2Raised;
+                break;
+
+            case "ex":
+                let tempVarForERaised;
+                tempVarForERaised = resultValue
+                resultValue = Math.exp(resultValue);
+                resultToShow.value = 'e^' + tempVarForERaised;
+                break;
+
+            case "y√x":
+                resultToShow.value = resultValue;
+                resultValue += '**1/';
+                break;
+
+            case "logyx":
+                let xValue = parseInt(resultValue.slice(0, 1));
+                let yValue = parseInt(resultValue.slice(1, 3));
+                resultToShow.value = 'log(' + xValue + ',' + yValue + ')';
+                resultValue = getBaseLog(xValue, yValue);
+
+                function getBaseLog(x, y) {
+                    return Math.log(x) / Math.log(y);
+                }
+                break;
             default:
                 resultValue += buttonText;
                 result.value = resultValue;
         }
     })
 }
+
 if (result.value == "") {
     result.value = 0;
 
+}
+/* Deg Rad button toggle js */
+function SwitchButtons(buttonId) {
+    var hideBtn, showBtn, menuToggle;
+    if (buttonId == 'deg') {
+        degButton.classList.add("radiobtnselected");
+        showBtn = 'rad';
+        hideBtn = 'deg';
+    } else {
+        radButton.classList.add("radiobtnselected");
+        showBtn = 'deg';
+        hideBtn = 'rad';
+    }
+    document.getElementById(hideBtn).style.display = 'none';
+    document.getElementById(showBtn).style.display = '';
 }
