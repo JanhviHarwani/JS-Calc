@@ -143,7 +143,6 @@ button:active {
 
 .degRad {
     grid-column: 1;
-    /* grid-column-gap: 0.5rem; */
 }
 
 .background_color {
