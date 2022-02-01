@@ -13,7 +13,6 @@ function degFunction() {
     return resultValue * (Math.PI / 180);
 
 }
-
 //for parenthesis loop hole:invalid syntax
 let brackets;
 let openingBracket = document.querySelector(".open_parenthesis");
@@ -32,10 +31,15 @@ for (var i = 0; i < buttonLength; i++) {
         buttonText = event.target.textContent;
         switch (buttonText) {
             case "=":
-                if (brackets != 0) {
+                if (resultValue === "" || resultValue === 0) {
                     result.value = "Invalid Syntax";
+
+                } else {
+                    if (brackets !== 0) {
+                        result.value = "Invalid Syntax";
+                    }
+                    result.value = eval(resultValue);
                 }
-                result.value = eval(resultValue);
                 break;
             case "mod":
                 buttonText = "%";
@@ -47,66 +51,90 @@ for (var i = 0; i < buttonLength; i++) {
                 resultValue += buttonText;
                 result.value = resultValue;
                 break;
-
             case "1/x":
                 buttonText = "1/";
                 resultValue += buttonText;
                 result.value = resultValue;
                 break;
-
             case "|x|":
                 resultValue = Math.abs(resultValue);
                 result.value = resultValue;
                 break;
             case "ln":
-                resultValue = Math.log(resultValue);
-                result.value = resultValue;
-                break;
+                if (resultValue === "" || resultValue === 0) {
+                    result.value = "Invalid Syntax";
 
+                } else {
+                    resultValue = Math.log(resultValue);
+                    result.value = resultValue;
+                }
+                break;
             case "log":
-                resultValue = Math.log10(resultValue);
-                result.value = resultValue;
-                break;
+                if (resultValue === "" || resultValue === 0) {
+                    result.value = "Invalid Syntax";
 
+                } else {
+                    resultValue = Math.log10(resultValue);
+                    result.value = resultValue;
+                }
+                break;
             case "Floor":
-                resultValue = Math.floor(resultValue);
-                result.value = resultValue;
-                break;
+                if (resultValue === "" || resultValue === 0) {
+                    result.value = "Invalid Syntax";
 
+                } else {
+                    resultValue = Math.floor(resultValue);
+                    result.value = resultValue;
+                }
+                break;
             case "Ceiling":
-                resultValue = Math.ceil(resultValue);
-                result.value = resultValue;
-                break;
+                if (resultValue === "" || resultValue === 0) {
+                    result.value = "Invalid Syntax";
 
+                } else {
+                    resultValue = Math.ceil(resultValue);
+                    result.value = resultValue;
+                }
+                break;
             case "Round":
-                resultValue = Math.round(resultValue);
-                result.value = resultValue;
-                break;
+                if (resultValue === "" || resultValue === 0) {
+                    result.value = "Invalid Syntax";
 
+                } else {
+                    resultValue = Math.round(resultValue);
+                    result.value = resultValue;
+                }
+                break;
             case "Sign":
-                resultValue = Math.sign(resultValue);
-                result.value = resultValue;
-                break;
+                if (resultValue === "" || resultValue === 0) {
+                    result.value = "Invalid Syntax";
 
+                } else {
+                    resultValue = Math.sign(resultValue);
+                    result.value = resultValue;
+                }
+                break;
             case "Truncate":
-                resultValue = Math.trunc(resultValue);
-                result.value = resultValue;
-                break;
+                if (resultValue === "" || resultValue === 0) {
+                    result.value = "Invalid Syntax";
 
+                } else {
+                    resultValue = Math.trunc(resultValue);
+                    result.value = resultValue;
+                }
+                break;
             case "10x":
                 let tempVarForTenRaised;
                 tempVarForTenRaised = resultValue
                 resultValue = Math.pow(10, resultValue);
                 resultToShow.value = "10^" + tempVarForTenRaised;
                 break;
-
             case "x2":
                 let tempVarForSquare;
                 tempVarForSquare = resultValue
                 resultValue = Math.pow(resultValue, 2);
                 resultToShow.value = tempVarForSquare + "^2";
                 break;
-
             case "+/-":
                 if (Math.sign(resultValue) == 1) {
                     tempValueForPlus = Math.abs(resultValue);
@@ -118,19 +146,16 @@ for (var i = 0; i < buttonLength; i++) {
                     result.value = resultValue;
                 }
                 break;
-
             case "sin":
                 tempVarTrigo = resultValue;
                 if (degButton.classList.contains('radiobtnselected')) {
                     deg = degFunction();
                     resultToShow.value = "sin(" + tempVarTrigo + ")°";
                     resultValue = Math.sin(deg);
-
                 }
                 if (radButton.classList.contains('radiobtnselected')) {
                     resultToShow.value = "sin(" + tempVarTrigo + ")rad"
                     resultValue = Math.sin(resultValue);
-
                 }
                 break;
             case "cos":
@@ -139,12 +164,10 @@ for (var i = 0; i < buttonLength; i++) {
                     deg = degFunction();
                     resultToShow.value = "cos(" + tempVarTrigo + ")°";
                     resultValue = Math.cos(deg);
-
                 }
                 if (radButton.classList.contains('radiobtnselected')) {
                     resultToShow.value = "cos(" + tempVarTrigo + ")rad"
                     resultValue = Math.cos(resultValue);
-
                 }
                 break;
             case "tan":
@@ -153,12 +176,10 @@ for (var i = 0; i < buttonLength; i++) {
                     deg = degFunction();
                     resultToShow.value = "tan(" + tempVarTrigo + ")°";
                     resultValue = Math.tan(deg);
-
                 }
                 if (radButton.classList.contains('radiobtnselected')) {
                     resultToShow.value = "tan(" + tempVarTrigo + ")rad"
                     resultValue = Math.tan(resultValue);
-
                 }
                 break;
             case "asin":
@@ -197,36 +218,32 @@ for (var i = 0; i < buttonLength; i++) {
             case "MS":
                 memorySave = result.value;
                 break;
-
             case "M+":
-                resultValue = parseInt(resultValue) + parseInt(memorySave);
-                result.value = resultValue;
-                break;
+                if (resultValue === "" || resultValue === 0) {
+                    result.value = "Invalid Syntax";
 
+                } else {
+                    resultValue = parseInt(resultValue) + parseInt(memorySave);
+                    result.value = resultValue;
+                }
+                break;
             case "M-":
                 resultValue = parseInt(resultValue) - parseInt(memorySave);
                 result.value = resultValue;
                 break;
-
             case "MR":
-
                 resultValue = memorySave;
                 result.value = resultValue;
-
                 break;
-
             case "MC":
                 memorySave = "";
                 resultValue = memorySave;
                 result.value = "0";
-
                 break;
-
             case "exp":
                 resultValue = Math.exp(resultValue);
                 result.value = resultValue;
                 break;
-
             case "π":
                 if (result.value == "0") {
                     resultValue = Math.PI;
@@ -235,7 +252,6 @@ for (var i = 0; i < buttonLength; i++) {
                     result.value = Math.PI * resultValue;
                 }
                 break;
-
             case "e":
                 if (result.value == "0") {
                     resultValue = Math.E;
@@ -244,27 +260,27 @@ for (var i = 0; i < buttonLength; i++) {
                     result.value = Math.E * resultValue;
                 }
                 break;
-
             case "xy":
                 resultValue += '**';
                 break;
-
             case "exp":
                 resultValue = Math.exp(resultValue);
                 break;
-
             case "√":
                 let tempVarForsqrt;
                 tempVarForsqrt = resultValue
                 resultValue = Math.pow(resultValue, 1 / 2);
                 resultToShow.value = "√" + tempVarForsqrt;
                 break;
-
             case "F-E":
-                resultValue = parseFloat(resultValue).toExponential();
-                result.value = resultValue;
-                break;
+                if (resultValue === "" || resultValue === 0) {
+                    result.value = "Invalid Syntax";
 
+                } else {
+                    resultValue = parseFloat(resultValue).toExponential();
+                    result.value = resultValue;
+                }
+                break;
             case "n!":
                 function factorial(resultValue) {
                     if (resultValue == 0 || resultValue == 1) {
@@ -347,14 +363,13 @@ for (var i = 0; i < buttonLength; i++) {
         }
     })
 }
-
-if (result.value == "") {
+if (result.value === "") {
     result.value = 0;
 
 }
 /* Deg Rad button toggle js */
 function SwitchButtons(buttonId) {
-    var hideBtn, showBtn, menuToggle;
+    var hideBtn, showBtn;
     if (buttonId == 'deg') {
         degButton.classList.add("radiobtnselected");
         showBtn = 'rad';
