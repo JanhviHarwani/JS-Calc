@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JS Calc</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--bootstrap css cdn-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!--custom stylesheet reference-->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <section class="main_calc">
+        <div class="grid_calc">
+            <input type="text" name="result" class="result" id="result">
+            <div class="buttons">
+                <div class="deg_fe">
+                    <div class="degRad textAlignmentContainer">
+                        <div class="deg">
+                            <div id="deg" onclick="SwitchButtons('deg');" type="button">DEG</div>
+                        </div>
+                        <div class="rad">
+                            <div id="rad" onclick="SwitchButtons('rad');" type="button" style='display:none;'>RAD</div>
+                        </div>
+                    </div>
+                    <button class="active_bgColor fe">
+                        <div class="textAlignmentContainer">F-E</div>
+                    </button>
+                </div>
+                <div class="mc_mr_mPlus_minus_ms">
+                    <button class="active_bgColor memClear">
+                        <div class="textAlignmentContainer">MC</div>
+                        </button>
+                    <button class="active_bgColor mr">
+                        <div class="textAlignmentContainer">MR</div>
+                        </button>
+                    <button class="active_bgColor mPlus">
+                        <div class="textAlignmentContainer">M+</div>
+                        </button>
+                    <button class="active_bgColor mMinus">
+                        <div class="textAlignmentContainer">M-</div>
+                        </button>
+                    <button class="active_bgColor ms">
+                        <div class="textAlignmentContainer">MS</div>
+                        </button>
+                </div>
+                <div class="trigo_function">
+                    <div class="trigoBtns">
+                        <div class="dropdown">
+                            <div class="active_bgColor trigo btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                &#8895;Trigonometry<i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <button class="dropdown-item" type="button">sin</button>
+                                <button class="dropdown-item" type="button">cos</button>
+                                <button class="dropdown-item" type="button">tan</button>
+                                <button class="dropdown-item" type="button">asin</button>
+                                <button class="dropdown-item" type="button">acos</button>
+                                <button class="dropdown-item" type="button">atan</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <div class="active_bgColor trigo btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            ƒ Function<i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            <button class="dropdown-item" type="button">Floor</button>
+                            <button class="dropdown-item" type="button">Ceiling</button>
+                            <button class="dropdown-item" type="button">Round</button>
+                            <button class="dropdown-item" type="button">Sign</button>
+                            <button class="dropdown-item" type="button">Truncate</button>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="grid_keypad">
+                    <button class="background_color second">
+                        <div class="textAlignmentContainer">2<sup>nd</sup></div>
+                        </button>
+                    <button class="background_color pie">
+                        <div class="textAlignmentContainer">π</div>
+                    </button>
+                    <button class="background_color expo">
+                        <div class="textAlignmentContainer">e</div>
+                        </button>
+                    <button class="background_color clear">
+                        <div class="textAlignmentContainer">C</div>
+                        </button>
+                    <button class="background_color delete">
+                        <div class="textAlignmentContainer">←</div>
+                        </button>
+                    <button class="background_color xSquare">
+                        <div class="textAlignmentContainer">x<sup>2</sup></div>
+                        </button>
+                    <button class="background_color oneDivide">
+                        <div class="textAlignmentContainer">1/x</div>
+                        </button>
+                    <button class="background_color modulo">
+                        <div class="textAlignmentContainer">|x|</div>
+                        </button>
+                    <button class="background_color exponential">
+                        <div class="textAlignmentContainer">exp</div>
+                        </button>
+                    <button class="background_color mod">
+                        <div class="textAlignmentContainer">mod</div>
+                        </button>
+                    <button class="background_color sqrt">
+                        <div class="textAlignmentContainer">√</div>
+                        </button>
+                    <button class="background_color brackets open_parenthesis">
+                        <div class="textAlignmentContainer">(</div>
+                        </button>
+                    <button class="background_color brackets closing_parenthesis">
+                        <div class="textAlignmentContainer">)</div>
+                        </button>
+                    <button class="background_color factorial">
+                        <div class="textAlignmentContainer">n!</div>
+                        </button>
+                    <button class="background_color division">
+                        <div class="textAlignmentContainer">÷</div>
+                        </button>
+                    <button class="background_color power">
+                        <div class="textAlignmentContainer">x<sup>y</sup></div>
+                        </button>
+                    <button class="background_color_num seven">
+                        <div class="textAlignmentContainer">7</div>
+                        </button>
+                    <button class="background_color_num eight">
+                        <div class="textAlignmentContainer">8</div>
+                        </button>
+                    <button class="background_color_num nine">
+                        <div class="textAlignmentContainer">9</div>
+                        </button>
+                    <button class="background_color multiply">
+                        <div class="textAlignmentContainer">*</div>
+                        </button>
+                    <button class="background_color tenRaiseTo">
+                        <div class="textAlignmentContainer">10<sup>x</sup></div>
+                        </button>
+                    <button class="background_color_num four">
+                        <div class="textAlignmentContainer">4</div>
+                        </button>
+                    <button class="background_color_num five">
+                        <div class="textAlignmentContainer">5</div>
+                        </button>
+                    <button class="background_color_num six">
+                        <div class="textAlignmentContainer">6</div>
+                        </button>
+                    <button class="background_color minus">
+                        <div class="textAlignmentContainer">-</div>
+                        </button>
+                    <button class="background_color log">
+                        <div class="textAlignmentContainer">log</div>
+                        </button>
+                    <button class="background_color_num one">
+                        <div class="textAlignmentContainer">1</div>
+                        </button>
+                    <button class="background_color_num two">
+                        <div class="textAlignmentContainer">2</div>
+                        </button>
+                    <button class="background_color_num three">
+                        <div class="textAlignmentContainer">3</div>
+                        </button>
+                    <button class="background_color plus">
+                        <div class="textAlignmentContainer">+</div>
+                        </button>
+                    <button class="background_color naturalLog">
+                        <div class="textAlignmentContainer">ln</div>
+                        </button>
+                    <button class="background_color_num plusOrMinus">
+                        <div class="textAlignmentContainer">+/-</div>
+                        </button>
+                    <button class="background_color_num zero">
+                        <div class="textAlignmentContainer">0</div>
+                        </button>
+                    <button class="background_color_num decimal_pt">
+                        <div class="textAlignmentContainer">.</div>
+                        </button>
+                    <button class="background_color_equals equals">
+                    <div class="textAlignmentContainer" id="equals">=</div>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--bootstrap js cdn-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!--custom js file reference-->
+    <script src="js/script.js"></script>
+</body>
+
+</html>
