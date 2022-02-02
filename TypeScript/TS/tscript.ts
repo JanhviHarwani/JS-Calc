@@ -4,12 +4,12 @@ var resultToShow = document.querySelector(".result")! as HTMLInputElement;
 var resultValue:string|number = "";
 var buttons= document.querySelectorAll("button")! ;
 var buttonLength = document.querySelectorAll("button").length;
-var degButton = document.querySelector(".deg")!;
-var radButton = document.querySelector(".rad")!;
+var degButton = document.querySelector(".deg")! as HTMLElement;
+var radButton = document.querySelector(".rad")! as HTMLElement;
 var memorySave:number|string;
 
 //for radian to degree conversion
-function degFunction() {
+function degFunction():number {
     return +resultValue * (Math.PI / 180);
 
 }
@@ -122,13 +122,13 @@ for (var i = 0; i < buttonLength; i++) {
                 }
                 break;
             case "10x":
-                let tempVarForTenRaised;
+                let tempVarForTenRaised:string|number;
                 tempVarForTenRaised = resultValue
                 resultValue = Math.pow(10, +resultValue);
                 resultToShow.value = "10^" + tempVarForTenRaised;
                 break;
             case "x2":
-                let tempVarForSquare;
+                let tempVarForSquare:string|number;
                 tempVarForSquare = resultValue
                 resultValue = Math.pow(+resultValue, 2);
                 resultToShow.value = tempVarForSquare + "^2";
@@ -265,7 +265,7 @@ for (var i = 0; i < buttonLength; i++) {
                 resultValue = Math.exp(+resultValue);
                 break;
             case "√":
-                let tempVarForsqrt;
+                let tempVarForsqrt:string|number;
                 tempVarForsqrt = resultValue
                 resultValue = Math.pow(+resultValue, 1 / 2);
                 resultToShow.value = "√" + tempVarForsqrt;
@@ -307,28 +307,28 @@ for (var i = 0; i < buttonLength; i++) {
                 break;
 
             case "x3":
-                let tempVarForCube;
+                let tempVarForCube:string|number;
                 tempVarForCube = resultValue
                 resultValue = Math.pow(+resultValue, 3);
                 resultToShow.value = tempVarForCube + "^3";
                 break;
 
             case "3√":
-                let tempVarForCubert;
+                let tempVarForCubert:string|number;
                 tempVarForCubert = resultValue
                 resultValue = Math.pow(+resultValue, 1 / 3);
                 resultToShow.value = '3√' + tempVarForCubert;
                 break;
 
             case "2x":
-                let tempVarFor2Raised;
+                let tempVarFor2Raised:string|number;
                 tempVarFor2Raised = resultValue
                 resultValue = Math.pow(2, +resultValue);
                 resultToShow.value = '2^' + tempVarFor2Raised;
                 break;
 
             case "ex":
-                let tempVarForERaised;
+                let tempVarForERaised:string|number;
                 tempVarForERaised = resultValue
                 resultValue = Math.exp(+resultValue);
                 resultToShow.value = 'e^' + tempVarForERaised;
@@ -367,10 +367,10 @@ if (result.value === "") {
 }
 /* Deg Rad button toggle js */
 function SwitchButtons(buttonId:string) {
-    var hideBtn, showBtn;
+    var hideBtn:string, showBtn:string;
     if (buttonId == 'deg') {
         degButton.classList.add("radiobtnselected");
-        showBtn = 'rad';
+        showBtn= 'rad';
         hideBtn = 'deg';
     } else {
         radButton.classList.add("radiobtnselected");
