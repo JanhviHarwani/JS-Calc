@@ -1,13 +1,13 @@
-type commonTypes = string | number;
-var buttonText: commonTypes, tempVarTrigo: commonTypes;
+type CommonTypes = string | number;
+var tempVarTrigo: CommonTypes;
 var result = document.querySelector("#result")! as HTMLInputElement;
 var resultToShow = document.querySelector(".result")! as HTMLInputElement;
-var resultValue: commonTypes = "";
+var resultValue: CommonTypes = "";
 var buttons = document.querySelectorAll("button")!;
 var buttonLength = document.querySelectorAll("button").length;
 var degButton = document.querySelector(".deg")! as HTMLElement;
 var radButton = document.querySelector(".rad")! as HTMLElement;
-var memorySave: commonTypes;
+var memorySave: CommonTypes;
 //for radian to degree conversion
 function degFunction(): number {
   return +resultValue * (Math.PI / 180);
@@ -24,11 +24,12 @@ closingBracket.addEventListener("click", () => {
 });
 
 //Event listeners and evaluation for all the buttons
-
+type ButtonTextValue='='|'mod'|'÷'|'1/x'|'|x|'|'ln'|'log'|'Floor'|'Ceiling'|'Round'|'Sign'|'Truncate'|'10x'|'x2'|'+/-'|'sin'|'cos'|'tan'|'asin'|'acos'|'atan'|'MS'|'M+'|'M-'|'MR'|'MC'|'π'|'e'|'xy'|'exp'|'√'|'F-E'|'n!'|'C'|'←'|'2nd'|'x3'|'3√'|'2x'|'ex'|'y√x'|'logyx';
 for (var i = 0; i < buttonLength; i++) {
   buttons[i].addEventListener("click", function (event) {
-    buttonText = (event.target as HTMLElement).textContent!;
-    switch (buttonText) {
+    let buttonText = (event.target as HTMLElement).textContent!;
+    let tempVarButton:ButtonTextValue=buttonText as ButtonTextValue;
+    switch (tempVarButton) {
       case "=":
         if (resultValue === "" || resultValue === 0) {
           result.value = "Invalid Syntax";
@@ -113,13 +114,13 @@ for (var i = 0; i < buttonLength; i++) {
         }
         break;
       case "10x":
-        let tempVarForTenRaised: commonTypes;
+        let tempVarForTenRaised: CommonTypes;
         tempVarForTenRaised = resultValue;
         resultValue = Math.pow(10, +resultValue);
         resultToShow.value = "10^" + tempVarForTenRaised;
         break;
       case "x2":
-        let tempVarForSquare: commonTypes;
+        let tempVarForSquare: CommonTypes;
         tempVarForSquare = resultValue;
         resultValue = Math.pow(+resultValue, 2);
         resultToShow.value = tempVarForSquare + "^2";
@@ -251,7 +252,7 @@ for (var i = 0; i < buttonLength; i++) {
         resultValue = Math.exp(+resultValue);
         break;
       case "√":
-        let tempVarForsqrt: commonTypes;
+        let tempVarForsqrt: CommonTypes;
         tempVarForsqrt = resultValue;
         resultValue = Math.pow(+resultValue, 1 / 2);
         resultToShow.value = "√" + tempVarForsqrt;
@@ -298,28 +299,28 @@ for (var i = 0; i < buttonLength; i++) {
         break;
 
       case "x3":
-        let tempVarForCube: commonTypes;
+        let tempVarForCube: CommonTypes;
         tempVarForCube = resultValue;
         resultValue = Math.pow(+resultValue, 3);
         resultToShow.value = tempVarForCube + "^3";
         break;
 
       case "3√":
-        let tempVarForCubert: commonTypes;
+        let tempVarForCubert: CommonTypes;
         tempVarForCubert = resultValue;
         resultValue = Math.pow(+resultValue, 1 / 3);
         resultToShow.value = "3√" + tempVarForCubert;
         break;
 
       case "2x":
-        let tempVarFor2Raised: commonTypes;
+        let tempVarFor2Raised: CommonTypes;
         tempVarFor2Raised = resultValue;
         resultValue = Math.pow(2, +resultValue);
         resultToShow.value = "2^" + tempVarFor2Raised;
         break;
 
       case "ex":
-        let tempVarForERaised: commonTypes;
+        let tempVarForERaised: CommonTypes;
         tempVarForERaised = resultValue;
         resultValue = Math.exp(+resultValue);
         resultToShow.value = "e^" + tempVarForERaised;
